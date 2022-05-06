@@ -31,8 +31,6 @@ DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS directors;
 
-
-
 CREATE TABLE IF NOT EXISTS directors
 (
     id   INT unsigned not null auto_increment,
@@ -44,43 +42,45 @@ CREATE TABLE IF NOT EXISTS directors
 
 CREATE TABLE IF NOT EXISTS movies
 (
-    Title    varchar(155) not null,
-    Year     char(4)      not null,
-    Plot     TEXT         not null,
-    Rating   char(1)      not null,
-    Poster   varchar(255) ,
-#     Genre    varchar(32),
-#     Actors   varchar(255),
-    id       INT unsigned not null auto_increment,
+    Title       varchar(155) not null,
+    Year        char(4)      not null,
+    Plot        TEXT         not null,
+    Rating      char(1)      not null,
+    Poster      varchar(255),
+    id          INT unsigned not null auto_increment,
     director_id INT unsigned not null,
     primary key (id),
-    foreign key (director_id) REFERENCES directors(id)
+    foreign key (director_id) REFERENCES directors (id)
 );
 
-CREATE TABLE IF NOT EXISTS genres(
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    name VARCHAR (32),
+CREATE TABLE IF NOT EXISTS genres
+(
+    id   INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(32),
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS movie_genre(
+CREATE TABLE IF NOT EXISTS movie_genre
+(
     movie_id INT UNSIGNED NOT NULL,
     genre_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (movie_id) REFERENCES movies(id),
-    FOREIGN KEY (genre_id) REFERENCES genres(id)
+    FOREIGN KEY (movie_id) REFERENCES movies (id),
+    FOREIGN KEY (genre_id) REFERENCES genres (id)
 );
 
-CREATE TABLE IF NOT EXISTS actors(
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS actors
+(
+    id   INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(255),
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS movie_actors(
+CREATE TABLE IF NOT EXISTS movie_actors
+(
     movie_id INT UNSIGNED NOT NULL,
     actor_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (movie_id) REFERENCES movies(id),
-    FOREIGN KEY (actor_id) REFERENCES  actors(id)
+    FOREIGN KEY (movie_id) REFERENCES movies (id),
+    FOREIGN KEY (actor_id) REFERENCES actors (id)
 );
 
 
