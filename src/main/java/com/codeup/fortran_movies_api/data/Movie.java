@@ -1,8 +1,6 @@
 package com.codeup.fortran_movies_api.data;
 
 
-
-
 public class Movie {
     private int id;
     private String title;
@@ -10,11 +8,19 @@ public class Movie {
     private String director;
     private String actors;
     private String imdbId;
-    private String movieser;
     private String genre;
     private String plot;
 
-
+    public Movie(int id, String title, String year, String director, String actors, String imdbId, String genre, String plot) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.director = director;
+        this.actors = actors;
+        this.imdbId = imdbId;
+        this.genre = genre;
+        this.plot = plot;
+    }
 
 
     public int getId() {
@@ -65,14 +71,6 @@ public class Movie {
         this.imdbId = imdbId;
     }
 
-    public String getMovieser() {
-        return movieser;
-    }
-
-    public void setMovieser(String movieser) {
-        this.movieser = movieser;
-    }
-
     public String getGenre() {
         return genre;
     }
@@ -87,5 +85,20 @@ public class Movie {
 
     public void setPlot(String plot) {
         this.plot = plot;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", director='" + director + '\'' +
+                ", actors='" + actors + '\'' +
+                ", imdbId='" + imdbId + '\'' +
+                ", genre='" + genre + '\'' +
+                ", plot='" + plot + '\'' +
+                '}';
     }
 }
