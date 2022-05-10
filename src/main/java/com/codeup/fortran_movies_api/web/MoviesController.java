@@ -16,7 +16,7 @@ public class MoviesController {
 
     @GetMapping
     public Movie one() {
-        return sampleMovies.get(1);
+        return sampleMovies.get(0);
     }
 
     @GetMapping("all")
@@ -30,42 +30,55 @@ public class MoviesController {
         List<Movie> movies = new ArrayList<>();
         movies.add(new Movie(1, "pulp fiction",
                 "1994", "quentin tarantino",
-                "samuel l jackson, bruce willis, john travolta", "10", "drama, crime, suspense",
+                "samuel l jackson, bruce willis, john travolta", "drama, crime, suspense",
                 "crime hit-man stuff"));
         movies.add(new Movie(2, "The dude",
-                "1995", "Cohen Bros", "Jeff B",
-                "idk man", "comedy",
+                "1995", "Cohen Bros", "Jeff B", "comedy",
                 "the dude abides"));
         movies.add(new Movie(3, "Jurassic Park",
                 "1993",
                 "Steven Spielberg",
-                "Jeff Goldblum, Sam Niell, Laura Dern", "234",
+                "Jeff Goldblum, Sam Niell, Laura Dern",
                 "dino-horror", "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose."));
 
 
         return movies;
     }
 
-    @GetMapping("{id}")
-    public Movie getByID(@PathVariable Long  id){
-return sampleMovies.stream().filter((movie) -> {
-    return movie.getId() == id;
-
-    })
-        .findFirst()
-        .orElse(null);
-
-}
-    @PostMapping
-    public void create(@RequestBody Movie newMovie){
-        newMovie.setId(4);
-        newMovie.setTitle("The Batman");
-        newMovie.setYear("2022");
-        newMovie.setDirector("Matt Reeves");
-        newMovie.setActors("Robert Pattinson, Zoe Kravitz, Jeffrey Wright, Colin Farrell, Paul Dano");
-        newMovie.setImdbId("123");
-        newMovie.setGenre("Crime, Thriller, Drama");
-        newMovie.setPlot("Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues. As the evidence begins to lead closer to home and the scale of the perpetrator's plans become clear, he must forge new relationships, unmask the culprit and bring justice to the abuse of power and corruption that has long plagued the metropolis.");
-        System.out.println(newMovie);
+    @GetMapping("search/{title}")
+    public Movie getByTitle(@PathVariable String title){
+        Movie movieToReturn = null;
+        for (Movie movie : sampleMovies){
+            if(movie.getTitle().contains(title)){
+                movieToReturn = movie;
+            }
+        }
+        return movieToReturn;
     }
+
+    @GetMapping("{id}")
+    public Movie getByID(@PathVariable Long id) {
+        return sampleMovies.stream().filter((movie) -> {
+                    return movie.getId() == id;
+
+                })
+                .findFirst()
+                .orElse(null);
+
+    }
+
+    @PostMapping
+    public void create(@RequestBody Movie newMovie) {
+        sampleMovies.add(newMovie);
+    }
+
+    @PostMapping("all")
+    public void createAll(@RequestBody List<Movie> newMovies) { //dont forget to add @RequstBody, @Pathvariable, etc...
+        sampleMovies.addAll(newMovies);//adAll on the collection object allows us to add all the elements from one collection to another in a single line
+    }
+
+
+
+
+
 }
