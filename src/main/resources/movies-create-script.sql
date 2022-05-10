@@ -93,7 +93,6 @@ CREATE TABLE IF NOT EXISTS movie_actors
     FOREIGN KEY (actor_id) REFERENCES actors (id)
 );
 
-select * from movies
 
 
 
