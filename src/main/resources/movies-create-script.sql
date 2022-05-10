@@ -31,6 +31,9 @@ DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS directors;
 
+
+
+
 CREATE TABLE IF NOT EXISTS directors
 (
     id   INT unsigned not null auto_increment,
@@ -39,19 +42,26 @@ CREATE TABLE IF NOT EXISTS directors
 
 );
 
-
-CREATE TABLE IF NOT EXISTS movies
-(
-    Title       varchar(155) not null,
-    Year        char(4)      not null,
-    Plot        TEXT         not null,
-    Rating      char(1)      not null,
-    Poster      varchar(255),
-    id          INT unsigned not null auto_increment,
-    director_id INT unsigned not null,
-    primary key (id),
-    foreign key (director_id) REFERENCES directors (id)
+CREATE TABLE IF NOT EXISTS movies(
+                                     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                     title VARCHAR(255) NOT NULL,
+                                     year CHAR(4) NOT NULL,
+                                     plot TEXT,
+                                     PRIMARY KEY (id)
 );
+
+
+# CREATE TABLE IF NOT EXISTS movies
+# (
+#     Title       varchar(155) not null,
+#     Year        char(4)      not null,
+#     Plot        TEXT         not null,
+#     Poster      varchar(255),
+#     id          INT unsigned not null auto_increment,
+#     director_id INT unsigned not null,
+#     primary key (id),
+#     foreign key (director_id) REFERENCES directors (id)
+# );
 
 CREATE TABLE IF NOT EXISTS genres
 (
@@ -83,6 +93,7 @@ CREATE TABLE IF NOT EXISTS movie_actors
     FOREIGN KEY (actor_id) REFERENCES actors (id)
 );
 
+select * from movies
 
 
 
