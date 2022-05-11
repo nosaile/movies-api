@@ -43,10 +43,10 @@ CREATE TABLE IF NOT EXISTS directors
 
 CREATE TABLE IF NOT EXISTS movies
 (
-    id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    year  CHAR(4)      NOT NULL,
-    plot  TEXT,
+    id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title       VARCHAR(255) NOT NULL,
+    year        CHAR(4)      NOT NULL,
+    plot        TEXT,
     director_id INT unsigned not null,
     PRIMARY KEY (id),
     FOREIGN KEY (director_id) REFERENCES directors (id)
@@ -94,6 +94,26 @@ CREATE TABLE IF NOT EXISTS movie_actors
     FOREIGN KEY (movie_id) REFERENCES movies (id),
     FOREIGN KEY (actor_id) REFERENCES actors (id)
 );
+
+INSERT INTO genres (name)
+VALUES ('Comedy'),
+       ('Drama'),
+       ('Horror'),
+       ('Fantasy'),
+       ('Westerns'),
+       ('Action'),
+       ('Crime'),
+       ('Thriller');
+
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+INSERT INTO movie_genre(movie_id, genre_id)
+VALUES (1, 1),
+       (2, 5),
+       (3, 4),
+       (4, 1),
+       (6, 5),
+       (7, 7);
+
 
 
 

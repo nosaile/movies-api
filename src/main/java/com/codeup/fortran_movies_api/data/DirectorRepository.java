@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DirectorRepository extends JpaRepository<Director, Integer> {
+public interface DirectorRepository extends JpaRepository<Director, String> {
 
 
     List<Director> findByName(String name);
+
 
 
 }

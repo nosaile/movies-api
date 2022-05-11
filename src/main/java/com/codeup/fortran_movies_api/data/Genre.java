@@ -2,23 +2,35 @@ package com.codeup.fortran_movies_api.data;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "directors")
-public class Director {
+@Table(name = "genres")
+public class Genre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
 
-    public Director(int id, String name) {
+
+    @ManyToMany
+    @JoinTable(name = "movie_genre",
+            joinColumns =
+            @JoinColumn(name = "genre_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    )
+    private List<Movie> movies;
+
+
+    public Genre(int id, String name) {
         this.id = id;
         this.name = name;
-
     }
 
-    public Director() {
+    public Genre() {
 
     }
 
@@ -38,9 +50,13 @@ public class Director {
         this.name = name;
     }
 
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
     @Override
     public String toString() {
-        return "Director{" +
+        return "Genre{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

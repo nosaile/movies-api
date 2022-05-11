@@ -1,5 +1,8 @@
 package com.codeup.fortran_movies_api.web;
 
+
+import com.codeup.fortran_movies_api.data.Director;
+import com.codeup.fortran_movies_api.data.DirectorRepository;
 import com.codeup.fortran_movies_api.data.Movie;
 import com.codeup.fortran_movies_api.data.MoviesRepository;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +16,11 @@ import java.util.List;
 public class MoviesController {
 
     private final MoviesRepository moviesRepository;
+    private final DirectorRepository directorRepository;
 
-    public MoviesController(MoviesRepository moviesRepository) {
+    public MoviesController(MoviesRepository moviesRepository, DirectorRepository directorRepository){
         this.moviesRepository = moviesRepository;
+        this.directorRepository = directorRepository;
     }
 
     //single entry
@@ -30,8 +35,11 @@ public class MoviesController {
         moviesRepository.saveAll(newMovies);
     }
 
-
-
+    //allows us to search all movies by a certain director
+    @GetMapping("search/director")
+    public List<Movie> getByDirector(@RequestParam("director") String directorName) {
+        return moviesRepository.findByDirectorName(directorName);
+    }
 
     //return full list of movie objects
     @GetMapping("all")
@@ -44,6 +52,8 @@ public class MoviesController {
     public List<Movie> getByTitle(@RequestParam("title") String title) {
         return moviesRepository.findByTitle(title);
     }
+
+
 
     //allows us to filter through by id
     @GetMapping("search/id")
@@ -62,12 +72,7 @@ public class MoviesController {
         moviesRepository.deleteById(id);
     }
 
-//    @PutMapping("put/{title}")
-//    public void editByTitle( @PathVariable(value = "title") String title, @RequestBody Movie editMovieTitle){
-//     moviesRepository.editByTitle(title);
-//
-//     moviesRepository.save(editMovieTitle);
-//    }
+
 
 
 }
