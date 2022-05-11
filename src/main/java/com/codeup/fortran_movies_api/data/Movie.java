@@ -16,7 +16,9 @@ public class Movie {
     private String year;
     @ManyToOne
     private Director director;
-    //    private String actors;
+    @ManyToMany(mappedBy = "movies")
+    @JsonIgnoreProperties("movies")
+    private List<Actors> actors;
     @ManyToMany(mappedBy = "movies")
     @JsonIgnoreProperties("movies")
     private List<Genre> genres;
@@ -94,6 +96,14 @@ public class Movie {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
+    }
+
+    public List<Actors> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actors> actors) {
+        this.actors = actors;
     }
 
     @Override

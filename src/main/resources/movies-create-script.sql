@@ -105,12 +105,32 @@ VALUES ('Comedy'),
        ('Crime'),
        ('Thriller');
 
-SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
 INSERT INTO movie_genre(movie_id, genre_id)
 VALUES (1, 1),
        (2, 5),
        (3, 4),
        (4, 1),
+       (6, 5),
+       (7, 7);
+
+
+INSERT INTO actors (name)
+VALUES ('John Doe'),
+       ('Doe Johnson'),
+       ('Stan Marsh'),
+       ('Randy Marsh'),
+       ('Will Ferrell'),
+       ('Chris Eli'),
+       ('Denzel Washington'),
+       ('Peyton Manning');
+
+
+INSERT INTO movie_genre(movie_id, genre_id)
+VALUES (1, 1),
+       (2, 2),
+       (3, 4),
+       (4, 8),
        (6, 5),
        (7, 7);
 
