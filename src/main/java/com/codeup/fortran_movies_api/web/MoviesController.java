@@ -30,6 +30,9 @@ public class MoviesController {
         moviesRepository.saveAll(newMovies);
     }
 
+
+
+
     //return full list of movie objects
     @GetMapping("all")
     public List<Movie> getAll() {
@@ -48,11 +51,23 @@ public class MoviesController {
         return moviesRepository.findById(id);
     }
 
-//allows us to filter through by year in a range of years
+    //allows us to filter through by year in a range of years
     @GetMapping("search/year_range")
-    public List<Movie> getByYearRange(@RequestParam("startYear") int startYear, @RequestParam("endYear") int endYear){
+    public List<Movie> getByYearRange(@RequestParam("startYear") int startYear, @RequestParam("endYear") int endYear) {
         return moviesRepository.findByYearRange(startYear, endYear);
     }
+
+    @DeleteMapping("delete/{id}")
+    public void deletById(@PathVariable int id) {
+        moviesRepository.deleteById(id);
+    }
+
+//    @PutMapping("put/{title}")
+//    public void editByTitle( @PathVariable(value = "title") String title, @RequestBody Movie editMovieTitle){
+//     moviesRepository.editByTitle(title);
+//
+//     moviesRepository.save(editMovieTitle);
+//    }
 
 
 }

@@ -11,7 +11,8 @@ public class Movie {
     private int id;
     private String title;
     private String year;
-//    private String director;
+    @ManyToOne
+    private Director director;
 //    private String actors;
 //    private String genre;
     private String plot;
@@ -22,6 +23,7 @@ public class Movie {
         this.year = year;
         this.plot = plot;
     }
+
     public Movie() {
     }
 
@@ -57,6 +59,29 @@ public class Movie {
         this.plot = plot;
     }
 
+//    public String getPoster() {
+//        return poster;
+//    }
+//
+//    public void setPoster(String poster) {
+//        this.poster = poster;
+//    }
+//
+//    public String getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(String rating) {
+//        this.rating = rating;
+//    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
 
     @Override
     public String toString() {
@@ -65,6 +90,7 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", year='" + year + '\'' +
                 ", plot='" + plot + '\'' +
+                ", director='" + director + '\'' +
                 '}';
     }
 }

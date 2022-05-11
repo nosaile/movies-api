@@ -33,7 +33,6 @@ DROP TABLE IF EXISTS directors;
 
 
 
-
 CREATE TABLE IF NOT EXISTS directors
 (
     id   INT unsigned not null auto_increment,
@@ -42,12 +41,15 @@ CREATE TABLE IF NOT EXISTS directors
 
 );
 
-CREATE TABLE IF NOT EXISTS movies(
-                                     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                     title VARCHAR(255) NOT NULL,
-                                     year CHAR(4) NOT NULL,
-                                     plot TEXT,
-                                     PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS movies
+(
+    id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    year  CHAR(4)      NOT NULL,
+    plot  TEXT,
+    director_id INT unsigned not null,
+    PRIMARY KEY (id),
+    FOREIGN KEY (director_id) REFERENCES directors (id)
 );
 
 

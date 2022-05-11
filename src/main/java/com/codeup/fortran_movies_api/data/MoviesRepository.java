@@ -12,6 +12,10 @@ public interface MoviesRepository extends JpaRepository<Movie, Integer> {
 
     List<Movie> findById(int id);
 
+
+
+//    List<Movie> editByTitle(String title);
+
     @Query(nativeQuery = true, value = "SELECT * FROM movies m WHERE m.year  >= :startYear AND m.year <= :endYear")
     List<Movie> findByYearRange(int startYear, int endYear);
 
