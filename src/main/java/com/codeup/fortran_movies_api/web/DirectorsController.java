@@ -14,12 +14,10 @@ import java.util.List;
 public class DirectorsController {
 
     private final DirectorRepository directorRepository;
-    private final MoviesRepository moviesRepository;
 
 
-    public DirectorsController(DirectorRepository directorRepository, MoviesRepository moviesRepository) {
+    public DirectorsController(DirectorRepository directorRepository) {
         this.directorRepository = directorRepository;
-        this.moviesRepository = moviesRepository;
     }
 
     @PostMapping("post")

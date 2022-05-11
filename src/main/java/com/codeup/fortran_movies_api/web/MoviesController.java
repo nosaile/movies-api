@@ -16,11 +16,10 @@ import java.util.List;
 public class MoviesController {
 
     private final MoviesRepository moviesRepository;
-    private final DirectorRepository directorRepository;
 
-    public MoviesController(MoviesRepository moviesRepository, DirectorRepository directorRepository){
+
+    public MoviesController(MoviesRepository moviesRepository){
         this.moviesRepository = moviesRepository;
-        this.directorRepository = directorRepository;
     }
 
     //single entry
