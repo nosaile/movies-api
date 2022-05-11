@@ -126,7 +126,7 @@ VALUES ('John Doe'),
        ('Peyton Manning');
 
 
-INSERT INTO movie_genre(movie_id, genre_id)
+INSERT INTO movie_actors(actor_id, movie_id)
 VALUES (1, 1),
        (2, 2),
        (3, 4),
@@ -134,7 +134,13 @@ VALUES (1, 1),
        (6, 5),
        (7, 7);
 
-
+INSERT INTO movie_actors(actor_id, movie_id)
+VALUES (1, 4),
+       (2, 3),
+       (3, 2),
+       (4, 1),
+       (6, 6),
+       (7, 4);
 
 
 
