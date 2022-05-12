@@ -2,13 +2,11 @@ package com.codeup.fortran_movies_api.web;
 
 import com.codeup.fortran_movies_api.data.Director;
 import com.codeup.fortran_movies_api.data.DirectorRepository;
-import com.codeup.fortran_movies_api.data.Movie;
-import com.codeup.fortran_movies_api.data.MoviesRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin //this is to help with local dev testing
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/directors", headers = "Accept=application/json")
 public class DirectorsController {
@@ -20,12 +18,14 @@ public class DirectorsController {
         this.directorRepository = directorRepository;
     }
 
+    //allows the user to enter into the database a new director
     @PostMapping("post")
     public void create(@RequestBody Director newDirector) {
         directorRepository.save(newDirector);
 
     }
 
+    //allows the user to search through the database for a specific director
     @GetMapping("search")
     public List<Director> getByTitle(@RequestParam("name") String name) {
         return directorRepository.findByName(name);

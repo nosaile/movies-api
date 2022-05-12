@@ -1,8 +1,6 @@
 package com.codeup.fortran_movies_api.web;
 
 
-import com.codeup.fortran_movies_api.data.Director;
-import com.codeup.fortran_movies_api.data.DirectorRepository;
 import com.codeup.fortran_movies_api.data.Movie;
 import com.codeup.fortran_movies_api.data.MoviesRepository;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin //this is to help with local dev testing
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/movies", headers = "Accept=application/json")
 public class MoviesController {
@@ -18,17 +16,17 @@ public class MoviesController {
     private final MoviesRepository moviesRepository;
 
 
-    public MoviesController(MoviesRepository moviesRepository){
+    public MoviesController(MoviesRepository moviesRepository) {
         this.moviesRepository = moviesRepository;
     }
 
-    //single entry
+    //allows the user to input a single movie into the database
     @PostMapping("post")
     public void create(@RequestBody Movie newMovie) {
         moviesRepository.save(newMovie);
     }
 
-    //multiple entries
+    //multiple entries of movies to the database
     @PostMapping("post/all")
     public void createAll(@RequestBody List<Movie> newMovies) {
         moviesRepository.saveAll(newMovies);
@@ -52,8 +50,6 @@ public class MoviesController {
         return moviesRepository.findByTitle(title);
     }
 
-
-
     //allows us to filter through by id
     @GetMapping("search/id")
     public List<Movie> getById(@RequestParam("id") int id) {
@@ -66,12 +62,11 @@ public class MoviesController {
         return moviesRepository.findByYearRange(startYear, endYear);
     }
 
+    //allows the user to delete a specific movie by its movie id
     @DeleteMapping("delete/{id}")
     public void deletById(@PathVariable int id) {
         moviesRepository.deleteById(id);
     }
-
-
 
 
 }
