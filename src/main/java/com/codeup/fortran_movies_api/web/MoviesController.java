@@ -38,6 +38,7 @@ public class MoviesController {
                 movieDto.getYear(),
                 movieDto.getPlot(),
                 movieDto.getRating()
+
         );
 
         List<Director> directorsInDb = directorRepository.findByName(movieDto.getDirector());
