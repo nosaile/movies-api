@@ -23,15 +23,25 @@ public class Movie {
     @JsonIgnoreProperties("movies")
     private List<Genre> genres;
     private String plot;
+    private String rating;
+//    private String poster;
 
-    public Movie(int id, String title, String year, String plot) {
+    public Movie(int id, String title, String year, String plot, String rating) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.plot = plot;
+        this.rating = rating;
     }
 
     public Movie() {
+    }
+
+    public Movie(String title, String year, String plot, String rating) {
+        this.title = title;
+        this.year = year;
+        this.plot = plot;
+        this.rating = rating;
     }
 
     public int getId() {
@@ -74,13 +84,13 @@ public class Movie {
 //        this.poster = poster;
 //    }
 //
-//    public String getRating() {
-//        return rating;
-//    }
-//
-//    public void setRating(String rating) {
-//        this.rating = rating;
-//    }
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
     public Director getDirector() {
         return director;
@@ -112,6 +122,7 @@ public class Movie {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", year='" + year + '\'' +
+                ", rating='" + rating + '\'' +
                 ", plot='" + plot + '\'' +
                 ", director='" + director.getName() + '\'' +
                 '}';

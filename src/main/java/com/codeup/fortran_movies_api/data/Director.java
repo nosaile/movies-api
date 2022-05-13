@@ -22,6 +22,10 @@ public class Director {
 
     }
 
+    public Director(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS movies
     title       VARCHAR(255) NOT NULL,
     year        CHAR(4)      NOT NULL,
     plot        TEXT,
+    rating      INT UNSIGNED NOT NULL,
     director_id INT unsigned not null,
     PRIMARY KEY (id),
     FOREIGN KEY (director_id) REFERENCES directors (id)
@@ -106,15 +107,6 @@ VALUES ('Comedy'),
        ('Thriller');
 
 
-INSERT INTO movie_genre(movie_id, genre_id)
-VALUES (1, 1),
-       (2, 5),
-       (3, 4),
-       (4, 1),
-       (6, 5),
-       (7, 7);
-
-
 INSERT INTO actors (name)
 VALUES ('John Doe'),
        ('Doe Johnson'),
@@ -125,22 +117,33 @@ VALUES ('John Doe'),
        ('Denzel Washington'),
        ('Peyton Manning');
 
+INSERT INTO movie_genre (movie_id, genre_id)
+VALUES (1, 7),
+       (1, 6),
+       (2, 6),
+       (2, 4),
+       (3, 8);
 
-INSERT INTO movie_actors(actor_id, movie_id)
-VALUES (1, 1),
-       (2, 2),
-       (3, 4),
-       (4, 8),
-       (6, 5),
-       (7, 7);
+INSERT INTO movie_genre (movie_id, genre_id)
+VALUES (4, 4),
+       (4, 2),
+       (5, 6),
+       (5, 1),
+       (6, 6);
 
-INSERT INTO movie_actors(actor_id, movie_id)
-VALUES (1, 4),
-       (2, 3),
-       (3, 2),
-       (4, 1),
-       (6, 6),
-       (7, 4);
+
+INSERT INTO movie_genre (movie_id, genre_id) VALUE (1, 8);
+
+INSERT INTO movie_actors (actor_id, movie_id)
+VALUES (1, 3), (2,4), (3,5);
+INSERT INTO movie_actors (actor_id, movie_id)
+VALUES (1, 6), (2,2), (3,7);
+
+INSERT INTO movie_actors (actor_id, movie_id)
+VALUES (4, 5), (4,2), (4,3),(4, 5), (5,2), (6,3),(6, 5), (6,1), (6,7);
+
+
+
 
 
 

@@ -10,7 +10,7 @@ public interface MoviesRepository extends JpaRepository<Movie, Integer> {
 
     List<Movie> findByTitle(String title);
 
-    List<Movie> findById(int id);
+//    List<Movie> findById(int id);
 
     List<Movie> findByDirectorName(String directorName);
 
